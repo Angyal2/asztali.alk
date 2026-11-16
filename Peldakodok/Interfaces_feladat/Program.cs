@@ -1,10 +1,40 @@
-﻿namespace Interfaces_feladat
+﻿using Interfaces_feladat.FizetesiModok;
+using Interfaces_feladat.Targyak;
+
+namespace Interfaces_feladat
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            
+
+            Console.WriteLine("----TESZTELÉS----\n \n");
+
+            Console.WriteLine("♦ BANKKÁRTYÁS FIZETÉS: ");
+            Bankkartya bankkartya = new Bankkartya();
+            bankkartya.Egyenleg = 1000;
+            Vasarlas bankkartyasfizetes = new Vasarlas(bankkartya);
+            bankkartyasfizetes.Vegosszeg = 2000;
+            bankkartyasfizetes.Fizetes();
+
+            Console.WriteLine("♦ KÉSZPÉNZES FIZETÉS: ");
+            Keszpenz keszpenz = new Keszpenz();
+            keszpenz.Egyenleg = 1000;
+            Vasarlas keszpenzesfizetes = new Vasarlas(keszpenz);
+            keszpenzesfizetes.Vegosszeg = 500;
+            keszpenzesfizetes.Fizetes();
+
+            Console.WriteLine("♦ REVOLUT FIZETÉS:");
+            Revolut revolut = new Revolut();
+            revolut.Egyenleg = 1000;
+            Vasarlas revolutosfizetes = new Vasarlas(revolut);
+            revolutosfizetes.Vegosszeg = 3000;
+            revolutosfizetes.Fizetes();
+
+            Cigi cigi = new Cigi();
+            cigi.Ar = 2720;
+            revolutosfizetes.Kosarbatetel(cigi);
 
             //hozz létre egy új vásárlást Bankkártyával
             /*állíts be 1000 kezdeti egyenleget
