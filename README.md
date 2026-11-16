@@ -1,1 +1,1 @@
-# asztali
+# 26/27 asztali
